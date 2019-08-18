@@ -1,0 +1,25 @@
+{
+    "Ho_ten": "Thảo Ngọc",
+    "MSSV": "125425",
+    "CMND": "025899331",
+    "Gioi_tinh": "Nữ",
+    "Ngay_sinh": "02/05/2000",
+    "Dia_chi": "12 Lũy Bán Bích, Phường 1, Quận Tân Phú, Hồ Chí Minh, Việt Nam",
+    "Lop": {
+        "Ten_lop": "11DHCT",
+        "Khoa": "Kinh tế"
+    },
+    "Diem": {
+        "Hoc_ky_1": {
+            "Toan_A1": 10,
+            "Ly_A1": 10,
+            "Mac_Le_nin": 10
+        },
+        "Hoc_ky_2": {
+            "Toan_A2": 10,
+            "Ly_A2": 10,
+            "GDTC": 10
+        }
+    }
+
+}

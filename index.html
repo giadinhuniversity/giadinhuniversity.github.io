@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Bài thi</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            padding: 20px;
+            margin: 0;
+            width: 100%;
+        }
+        
+        .left-column {
+            margin-top: 5%;
+            margin-left: 2%;
+            display: block;
+            left: 0;
+            bottom: 0;
+            top: 0;
+            overflow: hiddden;
+        }
+        
+        .right-column {
+            margin-top: 5%;
+            width: 24%;
+            vertical-align: top;
+            display: block;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            overflow: hiddden;
+        }
+        
+        .center-column {
+            margin-top: 6%;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: calc(25%);
+            right: calc(12%);
+            bottom: 0;
+            overflow-y: scroll;
+        }
+        
+        .header {
+            height: 7%;
+            color: #fff;
+            position: fixed;
+            left: 0px;
+            right: 0px;
+            top: 0px;
+            z-index: 1;
+            background-color: red;
+        }
+        
+        .text-center {
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="row">
+            <div class="col-lg-3">
+
+            </div>
+            <div class="col-lg-6">
+                <h1 id="time_count" class="text-center"></h1>
+            </div>
+            <div class="col-lg-3">
+
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2 left-column">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h5 class="text-center">Thông tin thí sinh</h5>
+                    </div>
+                    <div class="col-lg-12">
+                        <img src="img/1.jpg" width="100%" height="100%">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        Họ tên :
+                    </div>
+                    <div class="col-lg-6"> Ngọc Thảo
+                        <div id="ho_ten"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        Lớp:
+                    </div>
+                    <div class="col-lg-6"> 12DHCT
+                        <div id="lop"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        MSSV:
+                    </div>
+                    <div class="col-lg-6"> 3683379
+                        <div id="lop"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 center-column">
+                <h4 class="text-center">BÀI THI</h4>
+
+                <table class="table" id="noi_dung_thi"></table>
+            </div>
+            <div class="col-lg-4 right-column">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h5 class="text-center">Thông bài thi</h5>
+                    </div>
+                    <div class="col-lg-6">
+                        Mã đề :
+                    </div>
+                    <div class="col-lg-6">
+                        <div id="ma_de"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        Chủ đề:
+                    </div>
+                    <div class="col-lg-6">
+                        <div id="chu_de"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        Thời gian:
+                    </div>
+                    <div class="col-lg-6">
+                        <div id="thoi_gian"></div>
+                    </div>
+                    <div class="col-lg-12">
+                        <h5 class="text-center">Tiến độ</h5>
+                    </div>
+                    <div class="col-lg-12">
+                        <div id="tien_do"></div>
+                    </div>
+                </div>
+                <div class="text-center" id="bam_nop_bai"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="../Xu_ly/Xu_ly_3L.js"></script>
+    <script>
+        //Database****
+        var deThi1 = {
+            MaDe: "123",
+            ChuDe: "Dat Nuoc",
+            ThoiGian: 1,
+            CauHoi: [{
+                NoiDung: "Con gì tròn ?",
+                DapAn: [
+                    "Con 1",
+                    "Qua 2",
+                    "Con 3",
+                    "Con 4",
+                ],
+
+                DapAnDung: "Qua 2"
+            }, {
+                NoiDung: "Con gì méo ?",
+                DapAn: [
+                    "Con 5",
+                    "Qua 6",
+                    "Con 7",
+                    "Con 8",
+                ],
+                DapAnDung: "Qua 6"
+            }, {
+                NoiDung: "Con gì vuông ?",
+                DapAn: [
+                    "Con 9",
+                    "Qua 10",
+                    "Con 11",
+                    "Con 12",
+                ],
+                DapAnDung: "Qua 10"
+            }, {
+                NoiDung: "Con gì vuông ?",
+                DapAn: [
+                    "Con 9",
+                    "Qua 10",
+                    "Con 11",
+                    "Con 12",
+                ],
+                DapAnDung: "Qua 10"
+            }, {
+                NoiDung: "Con gì vuông ?",
+                DapAn: [
+                    "Con 9",
+                    "Qua 10",
+                    "Con 11",
+                    "Con 12",
+                ],
+                DapAnDung: "Qua 10"
+            }, {
+                NoiDung: "Con gì vuông ?",
+                DapAn: [
+                    "Con 9",
+                    "Qua 10",
+                    "Con 11",
+                    "Con 12",
+                ],
+                DapAnDung: "Qua 10"
+            }, {
+                NoiDung: "Con gì vuông ?",
+                DapAn: [
+                    "Con 9",
+                    "Qua 10",
+                    "Con 11",
+                    "Con 12",
+                ],
+                DapAnDung: "Qua 10"
+            }, {
+                NoiDung: "Con gì vuông ?",
+                DapAn: [
+                    "Con 9",
+                    "Qua 10",
+                    "Con 11",
+                    "Con 12",
+                ],
+                DapAnDung: "Qua 10"
+            }]
+        };
+
+        var baiThi = Doc_Danh_sach_De_thi().Danh_sach_De_thi;
+        //console.log(baiThi)
+        //var baiThi = [deThi1];
+        //console.log(baiThi)
+        var cau_hoi_thi = "";
+        var html = "";
+        var htmlTienDo = "";
+        var j = 0;
+        var timeCount = 0;
+        var status = 0;
+
+        //***Create the exam**********************
+        baiThi.forEach(x => {
+            if (x.MaDe == 123) {
+                ma_de.innerHTML = x.MaDe; //Get code of the exam
+                chu_de.innerHTML = x.ChuDe; //Get the exam topic
+                thoi_gian.innerHTML = x.ThoiGian + " phút"; //Get the time of the exam
+                timeCount = x.ThoiGian; //Set time count down
+                //Create the questions for the exam
+                x.CauHoi.forEach(y => {
+                    j++;
+                    htmlTienDo += `&nbsp <a id="${j}TA" href="home.html#${j}CH">Câu ${j} :</a> <input type="checkbox" readonly="readonly" name="type" value="${j}"/>`
+                    html += `<tbody width="100%"> <tr>
+            <td id="${j}CH"><b> Câu ${j}: ${y.NoiDung} </b></td>
+            `
+                    for (var k = 0; k < y.DapAn.length; k++) {
+                        html += `
+            <tr>
+            <td id="${j}-${k}"><input type="radio" name="CH_${j}" value="${k}_${
+                  y.DapAn[k]
+                }"> ${y.DapAn[k]}</td>
+            </tr>
+            `
+                    }
+                    html += `
+            <tr>
+            <input type="hidden" id="Cau_${j}" value="${y.DapAnDung}">
+        </tr><tbody>`;
+                });
+
+            }
+        });
+
+        //*****Change javascript to html with innerHTML************
+        noi_dung_thi.innerHTML = html;
+        tien_do.innerHTML = htmlTienDo;
+        time_count.innerHTML = timeCount + ":" + 00
+        bam_nop_bai.innerHTML = `<button type="button" class="btn btn-primary" id="nop_bai">Nộp bài</button>`
+
+        //Create grading function
+        var i = 0;
+
+        function chamDiem() {
+            var cauDung = 0; //A number of correct answers
+            var tongSoCau = 0; //A number of total question
+
+            //Get the exam
+            baiThi.forEach(x => {
+                //Get the question
+                x.CauHoi.forEach(y => {
+                    //Get the exam with the code
+                    if (x.MaDe == 123) {
+                        i++;
+                        tongSoCau = y.length; //Get length of answer system
+                        var radios = document.getElementsByName(`CH_${i}`); //Get the answer
+                        var dap_an_dung = document.getElementById(`Cau_${i}`); //Get results
+                        var dap_an_tra_loi = "";
+
+                        for (var j = 0, length = radios.length; j < length; j++) {
+                            var flag = 0;
+
+
+                            var noiDung = radios[j].value.split("_"); //Get value of radio checked
+
+                            //*****Check radio checked*****
+                            if (radios[j].checked) {
+
+                                dap_an_tra_loi = noiDung[1];
+
+                                //********Check correct sentence**********
+                                if (dap_an_dung.value == noiDung[1]) {
+                                    $("td#" + `${i +"-"+noiDung[0]}`).css("background-color", "green"); //Change color with id tag "td" of correct sentence 
+                                    $("a#" + `${i}TA`).css("color", "green"); //Change color tag "a" of correct sentence
+                                    flag++;
+                                }
+                            }
+
+                            //**********Check incorrect sentence***********
+                            if (noiDung[1] == dap_an_dung.value && flag == 0) {
+                                $("td#" + `${i +"-"+noiDung[0]}`).css("background-color", "red"); //Change color with id tag "td" of incorrect sentce
+                                $("a#" + `${i}TA`).css("color", "red"); //Change color tag "a" of incorrect sentence
+                            }
+                        }
+
+
+                        if (dap_an_dung.value == dap_an_tra_loi) {
+                            cauDung++; //count the correct sentence
+                        }
+                    }
+                });
+            });
+            bam_nop_bai.innerHTML = `Số câu đúng : ${cauDung}/${i}`
+        }
+
+        startTimer(); //start time count down
+
+        //*****Submit exam*******************
+        nop_bai.onclick = () => {
+            sessionStorage.removeItem("time");
+            status++;
+            time_count.innerHTML = "finished";
+            $(':radio:not(:checked)').attr('disabled', true); //Cannot allow people can check radio
+            chamDiem();
+        };
+
+        //*********************Can click on tag "tr" on table ************************************
+        $('#noi_dung_thi tr').click(function() {
+            if (status == 0) {
+                //****Click td can selected radio*******************
+                $(this).find('td input:radio').prop('checked', true);
+
+                //*****Change color when click tag "tr" on table********
+                $(this)
+                    .closest("tr")
+                    .siblings()
+                    .css("background-color", "white")
+                    .end()
+                    .css("background-color", "skyblue");
+
+                //******Get value "name" in tag "input"*********************
+                var a = $(this).find('td input:radio').prop('checked', true)
+                var laySttCH = a[0].name.split("_");
+
+                //******Find checkbox with value******************************
+                $(`input[type=checkbox][value=${laySttCH[1]}]`).prop("checked", true);
+            }
+        })
+
+        //************************************Checkbox readonly*******************************************
+        $(document.body).delegate('[type="checkbox"][readonly="readonly"]', 'click', function(e) {
+            e.preventDefault();
+
+        });
+
+
+        //******************************Time count down***************************************
+        function startTimer() {
+            var presentTime = document.getElementById('time_count').innerHTML;
+
+            var timeArray = presentTime.split(/[:]+/);
+            var m = timeArray[0];
+            var s = checkSecond((timeArray[1] - 1));
+            if (s == 59) {
+                m = m - 1
+            }
+            document.getElementById('time_count').innerHTML =
+                m + ":" + s;
+            if (m >= 0 && s > 0) {
+                setTimeout(startTimer, 1000);
+            } else {
+                time_count.innerHTML = "finished";
+                nop_bai.click();
+            }
+
+        }
+
+        function checkSecond(sec) {
+            if (sec < 10 && sec >= 0) {
+                sec = "0" + sec
+            }; // add zero in front of numbers < 10
+            if (sec < 0) {
+                sec = "59"
+            };
+            return sec;
+        }
+        //**********************************************************************************
+    </script>
+
+</body>
+
+</html>
