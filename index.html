@@ -213,18 +213,18 @@
                         j++;
                         if (j < 10) {
                             if (j % 3 == 0) {
-                                htmlTienDo += `<a id="${j}TA" href="index.html#${j}CH">Câu 0${j} :</a> <input type="checkbox" readonly="readonly" name="type" value="${j}"/></br>`
+                                htmlTienDo += `<a id="${j}TA" href="#${j}CH">Câu 0${j} :</a> <input type="checkbox" readonly="readonly" name="type" value="${j}"/></br>`
                             } else {
-                                htmlTienDo += `<a id="${j}TA" href="index.html#${j}CH">Câu 0${j} :</a> <input type="checkbox" readonly="readonly" name="type" value="${j}"/>`
+                                htmlTienDo += `<a id="${j}TA" href="#${j}CH">Câu 0${j} :</a> <input type="checkbox" readonly="readonly" name="type" value="${j}"/>`
                             }
 
                         } else if (j % 3 == 0 && j > 10 && j < 100) {
-                            htmlTienDo += `<a id="${j}TA" href="index.html#${j}CH">Câu ${j} :</a> <input type="checkbox" readonly="readonly" name="type" value="${j}"/> </br>`
+                            htmlTienDo += `<a id="${j}TA" href="#${j}CH">Câu ${j} :</a> <input type="checkbox" readonly="readonly" name="type" value="${j}"/> </br>`
                         } else {
                             if (j % 2 != 0 && j >= 100) {
-                                htmlTienDo += `<a id="${j}TA" href="index.html#${j}CH">Câu ${j} :</a> <input type="checkbox" readonly="readonly" name="type" value="${j}"/> </br>`
+                                htmlTienDo += `<a id="${j}TA" href="#${j}CH">Câu ${j} :</a> <input type="checkbox" readonly="readonly" name="type" value="${j}"/> </br>`
                             } else {
-                                htmlTienDo += `<a id="${j}TA" href="index.html#${j}CH">Câu ${j} :</a> <input type="checkbox" readonly="readonly" name="type" value="${j}"/>`
+                                htmlTienDo += `<a id="${j}TA" href="#${j}CH">Câu ${j} :</a> <input type="checkbox" readonly="readonly" name="type" value="${j}"/>`
                             }
 
                         }
