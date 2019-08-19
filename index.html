@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/menu.css">
     <style>
         body {
             margin: 0;
@@ -51,10 +53,11 @@
             display: block;
             position: absolute;
             top: 0;
-            left: calc(25%);
+            left: calc(18%);
             right: calc(12%);
             bottom: 0;
             overflow-y: scroll;
+            max-width: 58%;
         }
         
         .header {
@@ -76,112 +79,258 @@
         .tiendo {
             bottom: 0;
             overflow-y: scroll;
-            height: 300px;
+            height: 40vh;
+        }
+        
+        .bailam {
+            bottom: 0;
+            overflow-y: scroll;
+            height: 85vh;
+        }
+        
+        .hidden_button {
+            display: none;
+        }
+        
+        .logoGDU {
+            width: 100px;
+            height: 100px;
+            background-image: url("img/logo_gia_dinh.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .btn_li_menu {
+            border-radius: 70%;
+            width: 80px;
+            height: 80px;
+            margin-top: -15%;
         }
     </style>
 </head>
 
 <body>
-    <div class="header">
+    <header class="fixed-top" style="background-color: #003262;position: fixed;">
         <div class="row">
             <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <!-- <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#thong_tin_thi_sinh" id="btn_thong_tin_thi_sinh">Hiện thông tin thí sinh</button> -->
+                    </div>
+                    <div class="col-lg-5">
+                        <button type="button" class="btn btn-primary" style="display: none" data-toggle="modal" data-target="#myModal" id="btn_tien_do">Tiến độ</button>
+                    </div>
+                </div>
 
+                <div></div>
             </div>
             <div class="col-lg-6">
-                <h1 id="time_count" class="text-center"></h1>
+                <h1 id="time_count" class="text-center" style="color: white"></h1>
             </div>
             <div class="col-lg-3">
 
             </div>
         </div>
-    </div>
-    <div class="container-fluid">
+    </header>
+    <div class="container-fluid" style="margin-top:65px">
+
+
         <div class="row">
-            <div class="col-lg-2 left-column">
+            <div class="col-md-12 col-lg-2 collapse" id="thong_tin_thi_sinh">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-sm-12">
                         <h5 class="text-center">Thông tin thí sinh</h5>
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-sm-12">
                         <img src="img/1.jpg" width="100%" height="100%">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-6">
+                <div class="row" style="padding-left:20px">
+                    <div>
                         Họ tên :
                     </div>
-                    <div class="col-lg-6"> Ngọc Thảo
+                    <div> Ngọc Thảo
                         <div id="ho_ten"></div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-6">
+                <div class="row" style="padding-left:20px">
+                    <div>
                         Lớp:
                     </div>
-                    <div class="col-lg-6"> 12DHCT
+                    <div> 12DHCT
                         <div id="lop"></div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-6">
+                <div class="row" style="padding-left:20px">
+                    <div>
                         MSSV:
                     </div>
-                    <div class="col-lg-6"> 3683379
+                    <div> 3683379
                         <div id="lop"></div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 center-column">
+            <div class="col-md-12 col-lg-9" id="lam_bai_thi">
                 <h4 class="text-center">BÀI THI</h4>
+                <div class="bailam">
+                    <table class="table" id="noi_dung_thi"></table>
+                </div>
 
-                <table class="table" id="noi_dung_thi"></table>
             </div>
-            <div class="col-lg-4 right-column">
-                <div class="row">
-                    <div class="col-lg-12">
+            <div class="col-md-12 col-lg-3" id="thong_tin_bai_thi">
+                <div class="row" style="padding-left:20px">
+                    <div class="col-sm-12">
                         <h5 class="text-center">Thông bài thi</h5>
                     </div>
-                    <div class="col-lg-6">
+                </div>
+                <div class="row" style="padding-left:20px">
+                    <div>
                         Mã đề :
                     </div>
-                    <div class="col-lg-6">
+                    <div>
                         <div id="ma_de"></div>
                     </div>
-                    <div class="col-lg-6">
+                </div>
+                <div class="row" style="padding-left:20px">
+                    <div>
                         Chủ đề:
                     </div>
-                    <div class="col-lg-6">
+                    <div>
                         <div id="chu_de"></div>
                     </div>
-                    <div class="col-lg-6">
+                </div>
+                <div class="row" style="padding-left:20px">
+                    <div>
                         Thời gian:
                     </div>
-                    <div class="col-lg-6">
+                    <div>
                         <div id="thoi_gian"></div>
                     </div>
-                    <div class="col-lg-12">
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" id="thong_tin_tien_do">
                         <h5 class="text-center">Tiến độ</h5>
-                        <div class="row">
-                            <div class="col-lg-6">
+                        <div class="row" style="padding-left:20px" id="dem_cau_tl">
+                            <div class="col-sm-6">
                                 <div id="soCauLam"></div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-sm-6">
                                 <div id="tongCauHoi"></div>
                             </div>
                         </div>
-                        <div class="col-lg-12">
+                        <div class="col-sm-12">
                             <div id="tien_do" class="tiendo"></div>
                         </div>
                     </div>
-                    <div class="col-lg-12">
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
                         <div class="text-center" id="bam_nop_bai"></div>
                     </div>
-
-                    <div class="col-lg-12">
+                </div>
+                <div class="row" style="padding-left:20px">
+                    <div class="col-sm-12">
                         <b><div class="text-center" id="tongDiem"></div></b>
                     </div>
-
                 </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog" style="width: 280px;">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                        </div>
+                        <div class="col-sm-8">
+                            Tiến độ:
+                            <div id="soCauLam2" style="display: inline-block;"></div>
+                            <div id="tongCauHoi2" style="display: inline-block;"></div>
+                        </div>
+                        <div class="col-sm-2">
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div id="tien_do2" class="tiendo"></div>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- Menu can move -->
+        <div class="moveable logoGDU">
+            <nav>
+                <input class="menu-toggler " type="checkbox">
+                <label for=""></label>
+                <ul>
+                    <li class="menu-item">
+                        <a class="fas fa-cat" href=""></a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="fas fa-cookie-bite" href="#"></a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="fab fa-earlybirds" href="#"></a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="fab fa-fly" href="#"><button type="button" class="btn btn_li_menu" data-toggle="collapse" data-target="#thong_tin_thi_sinh" id="btn_thong_tin_thi_sinh">Hiện thí sinh</button></a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="far fa-gem" href="#" id=""></a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="fas fa-glass-cheers" href="#"></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div style="display: none">
+            <div class="demo__actions">
+                <button></button>
+            </div>
+            <pre class="demo__code"><code >
+                                        
+                                </code></pre>
+            <div class=" box-3">
+
+            </div>
+
+            <div>
+                <img id="magnifier-img"> <span class="magnifier-demo__zoomer"></span>
+            </div>
+            <div class="magnifier-demo__zoom-preview"></div>
+            <span class=" top-left">
+                            <span data-name="top left" ></span>
+            </span>
+            <span class=" top-right">
+                            <span data-name="top right" ></span>
+            </span>
+            <span class=" bottom-left">
+                            <span data-name="bottom left" ></span>
+            </span>
+            <span class=" bottom-right">
+                            <span data-name="bottom right" ></span>
+            </span>
+
+            <span class="one"></span>
+            <span class="two"></span>
+            <span class="three"></span>
+            <span class="four"></span>
+            <button class="sorting-demo__reset-button"></button>
+            <div class="custom-fn__wrapper">
+                <span class="custom-fn__div"></span>
             </div>
         </div>
         <!-- Optional JavaScript -->
@@ -190,6 +339,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="../Xu_ly/Xu_ly_3L.js"></script>
+        <script src="test/bundle.js"></script>
         <script>
             var baiThi = Doc_Danh_sach_De_thi().Danh_sach_De_thi;
             var cau_hoi_thi = "";
@@ -209,6 +359,7 @@
                     timeCount = x.ThoiGian; //Set time count down
                     //Create the questions for the exam
                     tongCauHoi.innerHTML = `Tổng: ${x.CauHoi.length}`
+                    tongCauHoi2.innerHTML = `${x.CauHoi.length} câu`
                     x.CauHoi.forEach(y => {
                         j++;
                         if (j < 10) {
@@ -262,9 +413,11 @@
             //*****Change javascript to html with innerHTML************
             noi_dung_thi.innerHTML = html;
             tien_do.innerHTML = htmlTienDo;
+            tien_do2.innerHTML = htmlTienDo;
             time_count.innerHTML = timeCount + ":" + 00
-            bam_nop_bai.innerHTML = `<button type="button" class="btn btn-primary" id="nop_bai">Nộp bài</button>`
+            bam_nop_bai.innerHTML = `<button type="button" class="btn btn-primary" style="width: 100%" id="nop_bai">Nộp bài</button>`
             soCauLam.innerHTML = `Số câu đã làm: 0`
+            soCauLam2.innerHTML = `0 /`
                 //Create grading function
             var i = 0;
 
@@ -369,10 +522,12 @@
                         if (flag3 == 0) {
                             cauDaLam++;
                             soCauLam.innerHTML = `Số câu đã làm: ${cauDaLam}`
+                            soCauLam2.innerHTML = `${cauDaLam} /`
                         }
                     } else {
                         cauDaLam++;
                         soCauLam.innerHTML = `Số câu đã làm: ${cauDaLam}`
+                        soCauLam2.innerHTML = `${cauDaLam} /`
                     }
                     array.push(as[0].value)
                     flag2++;
@@ -416,6 +571,53 @@
                 return sec;
             }
             //**********************************************************************************
+
+            // window.onresize = function(event) {
+
+            // };
+
+            if (screen.width >= 992 && screen.width <= 1196) {
+                document.getElementById("lam_bai_thi").classList.remove('col-lg-9');
+                document.getElementById("lam_bai_thi").classList.add('col-lg-8');
+                document.getElementById("thong_tin_bai_thi").classList.remove('col-lg-3');
+                document.getElementById("thong_tin_bai_thi").classList.add('col-lg-4');
+
+            } else {
+                document.getElementById("lam_bai_thi").classList.remove('col-lg-8');
+                document.getElementById("lam_bai_thi").classList.add('col-lg-9');
+                document.getElementById("thong_tin_bai_thi").classList.remove('col-lg-4');
+                document.getElementById("thong_tin_bai_thi").classList.add('col-lg-3');
+            }
+
+            if (screen.width >= 992) {
+                $("#btn_tien_do").hide();
+                $("#thong_tin_tien_do").show();
+            } else {
+                $("#btn_tien_do").show();
+                $("#thong_tin_tien_do").hide();
+            }
+
+            function do_change() {
+                document.getElementById("btn_tien_do").style.display = "block";;
+            }
+
+            btn_thong_tin_thi_sinh.onclick = () => {
+                if (document.getElementById("lam_bai_thi").classList.contains('col-lg-9')) {
+                    document.getElementById("lam_bai_thi").classList.remove('col-lg-9');
+                    document.getElementById("lam_bai_thi").classList.add('col-lg-7');
+                    btn_thong_tin_thi_sinh.innerHTML = "Ẩn thí sinh";
+                    // document.getElementById("thong_tin_bai_thi").classList.remove('col-md-3');
+                    // document.getElementById("thong_tin_bai_thi").classList.add('col-md-4');
+                } else {
+                    document.getElementById("lam_bai_thi").classList.remove('col-lg-7');
+                    document.getElementById("lam_bai_thi").classList.add('col-lg-9');
+                    btn_thong_tin_thi_sinh.innerHTML = "Hiện thí sinh"
+                        // document.getElementById("thong_tin_bai_thi").classList.remove('col-md-3');
+                        // document.getElementById("thong_tin_bai_thi").classList.add('col-md-4');
+                }
+
+
+            }
         </script>
 
 </body>

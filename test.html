@@ -2,73 +2,35 @@
 <html lang="en">
 
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <meta charset="UTF-8">
+    <title>displace.js</title>
 
+
+    <link rel="stylesheet" href="test/style.css">
 </head>
 
 <body>
-    <div class="row">
 
-        <a id="" href="">Câu: </a> <input type="checkbox" readonly="readonly" name="type" value="" />
-        <a id="" href="">Câu: </a> <input type="checkbox" readonly="readonly" name="type" value="" />
-        <a id="" href="">Câu: </a> <input type="checkbox" readonly="readonly" name="type" value="" /></br>
-        <a id="" href="">Câu: </a> <input type="checkbox" readonly="readonly" name="type" value="" />
-        <a id="" href="">Câu: </a> <input type="checkbox" readonly="readonly" name="type" value="" />
-        <a id="" href="">Câu: </a> <input type="checkbox" readonly="readonly" name="type" value="" />
-
-    </div>
-    <div id="noi_dung_de" style="display:none;">
-        Nội dung nào sau đây thể hiện quyền bình đẳng trong lĩnh vực hôn nhân và gia đình;[Cùng đóng góp công sức để duy trì đời sống phù hợp với khả năng của mình;Tự do lựa chọn nghề nghiệp phù phợp với khả năng của mình;Thực hiện đúng các giao kết trong hợp
-        đồng lao động;Đảm bảo quyền lợi hợp pháp của người lao động.| Điều nào sau đây không phải là mục dích của hôn nhân:;xây dựng gia đình hạnh phúc;củng cố tình yêu lứa đôi;tổ chức đời sống vật chất của gia đình;[thực hiện đúng nghĩa vụ của công dân
-        đối với đất nước
+    <div id="myCheck" class="moveable"> Hi
     </div>
 
+    <div style="display: none">
+        <div class="demo__two box-3">
+            <pre class="demo__code"><code class="javascript">
+				</code></pre>
+        </div>
+        <div class="demo__actions">
+            <button></button>
+        </div>
+    </div>
+
+    <script src="test/bundle.js"></script>
+    <script>
+        var element = document.getElementById("myCheck"); //grab the element
+        element.onclick = function() { //asign a function
+            console.log("okkk")
+        }
+    </script>
 </body>
 
 </html>
-
-<script type="text/javascript">
-    var nd = $("#noi_dung_de").html();
-    var cau_hoi = nd.split('|');
-    var html = "";
-    var tra_loi_dung = 0;
-    for (var i = 0; i < cau_hoi.length; i++) {
-        var chi_tiet = cau_hoi[i].split(';');
-        //alert(chi_tiet[i]);
-        for (var j = 0; j < chi_tiet.length; j++) {
-
-            if (j == 0) html += "<tr><td><b>Câu " + (i + 1) + ":</b></td><td> <b>" + chi_tiet[j].trim() + "</b></td></tr>";
-            else {
-                html += "<tr><td></td><td id='" + (i + 1 + String.fromCharCode(64 + j)) + "'><input type='checkbox' name='" + (i + 1 + String.fromCharCode(64 + j)) + "' value='" + chi_tiet[j].trim() + "'> " + String.fromCharCode(64 + j) + ". " + chi_tiet[j].replace("[", "").trim() + "</td></tr>";
-            }
-        }
-    }
-
-    $("#noi_dung_de").empty().append("<table>" + html + "</table><input type='submit' value='Trả lời xong' id='tra_loi_xong'>").fadeIn();
-    $("#noi_dung_de input").click(function() {
-        //Lấy tên của checkbox
-        var id = $(this).attr("name");
-
-        //Đổi màu nền câu trả lời
-
-        if ($(this).is(":checked")) $("td#" + id).css("background-color", "yellow");
-        else $("td#" + id).css("background-color", "");
-    });
-
-    $("#tra_loi_xong").click(function() {
-        $('#noi_dung_de input').each(function() {
-            var id = $(this).attr("name");
-            var ctl = $(this).val();
-
-            //Hiển thị câu đúng với nền là màu đỏ
-            if (ctl[0] == '[') {
-                //alert($("td#" + id).css("background-color"));
-                if ($("td#" + id).css("background-color") == "rgb(255, 255, 0)") {
-                    tra_loi_dung++;
-                } else $("td#" + id).css("background-color", "red");
-            }
-        });
-        $("#noi_dung_de").append("<p>Trả lời đúng :" + (tra_loi_dung < 0 ? "0" : tra_loi_dung) + " câu</p>");
-        $("#tra_loi_xong").fadeOut();
-    });
-</script>
