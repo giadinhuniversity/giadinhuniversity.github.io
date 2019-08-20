@@ -377,7 +377,7 @@
             var sinhVien = Doc_Danh_sach_Sinh_vien().Danh_sach_Sinh_vien;
             var maDe = sessionStorage.getItem("ma_de");
             var maThiSinh = sessionStorage.getItem("mssv")
-            console.log(sinhVien)
+                //console.log(sinhVien)
             var cau_hoi_thi = "";
             var html = "";
             var htmlTienDo = "";
@@ -409,7 +409,7 @@
             //***Create the exam**********************
             function getTheExam(maDe) {
                 baiThi.forEach(x => {
-                    if (x.MaDe == 123) {
+                    if (x.MaDe == maDe) {
                         ma_de.innerHTML = x.MaDe; //Get code of the exam
                         chu_de.innerHTML = x.ChuDe; //Get the exam topic
                         thoi_gian.innerHTML = x.ThoiGian + " phút"; //Get the time of the exam
@@ -417,6 +417,10 @@
                         //Create the questions for the exam
                         tongCauHoi.innerHTML = `Tổng: ${x.CauHoi.length}`
                         tongCauHoi2.innerHTML = `${x.CauHoi.length} câu`
+                        x.CauHoi.sort(function(a, b) {
+                            return 0.5 - Math.random()
+                        });
+                        //console.log(item)
                         x.CauHoi.forEach(y => {
                             j++;
                             if (j < 10) {
@@ -448,7 +452,10 @@
             <td id="${j}CH"><b> Câu ${j}: ${y.NoiDung} </b></td>
             `
                             }
-                            console.log("==>" + deBai.length)
+                            //console.log("==>" + deBai.length)
+                            y.DapAn.sort(function(a, b) {
+                                return 0.5 - Math.random()
+                            });
                             for (var k = 0; k < y.DapAn.length; k++) {
                                 html += `
             <tr>
