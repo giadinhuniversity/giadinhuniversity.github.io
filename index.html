@@ -137,7 +137,7 @@
 
 
         <div class="row">
-            <div class="col-md-12 col-lg-2 collapse" id="thong_tin_thi_sinh">
+            <div class="col-md-12 col-lg-2 collapse in show" id="thong_tin_thi_sinh">
                 <div class="row">
                     <div class="col-sm-12">
                         <h5 class="text-center">Thông tin thí sinh</h5>
@@ -150,28 +150,60 @@
                     <div>
                         Họ tên :
                     </div>
-                    <div> Ngọc Thảo
-                        <div id="ho_ten"></div>
-                    </div>
-                </div>
-                <div class="row" style="padding-left:20px">
                     <div>
-                        Lớp:
-                    </div>
-                    <div> 12DHCT
-                        <div id="lop"></div>
+                        <div id="ho_ten"></div>
                     </div>
                 </div>
                 <div class="row" style="padding-left:20px">
                     <div>
                         MSSV:
                     </div>
-                    <div> 3683379
+                    <div>
+                        <div id="mssv"></div>
+                    </div>
+                </div>
+                <div class="row" style="padding-left:20px">
+                    <div>
+                        Số CMND:
+                    </div>
+                    <div>
+                        <div id="cmnd"></div>
+                    </div>
+                </div>
+                <div class="row" style="padding-left:20px">
+                    <div>
+                        Lớp:
+                    </div>
+                    <div>
                         <div id="lop"></div>
                     </div>
                 </div>
+                <div class="row" style="padding-left:20px">
+                    <div>
+                        Khoa:
+                    </div>
+                    <div>
+                        <div id="khoa"></div>
+                    </div>
+                </div>
+                <div class="row" style="padding-left:20px">
+                    <div>
+                        Ngày sinh:
+                    </div>
+                    <div>
+                        <div id="ngay_sinh"></div>
+                    </div>
+                </div>
+                <div class="row" style="padding-left:20px">
+                    <div>
+                        Giới tính:
+                    </div>
+                    <div>
+                        <div id="gioi_tinh"></div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-12 col-lg-9" id="lam_bai_thi">
+            <div class="col-md-12 col-lg-7" id="lam_bai_thi">
                 <h4 class="text-center">BÀI THI</h4>
                 <div class="bailam">
                     <table class="table" id="noi_dung_thi"></table>
@@ -284,7 +316,7 @@
                         <a class="fab fa-earlybirds" href="#"></a>
                     </li>
                     <li class="menu-item">
-                        <a class="fab fa-fly" href="#"><button type="button" class="btn btn_li_menu" data-toggle="collapse" data-target="#thong_tin_thi_sinh" id="btn_thong_tin_thi_sinh">Hiện thí sinh</button></a>
+                        <a class="fab fa-fly" href="#"><button type="button" class="btn btn_li_menu" data-toggle="collapse" data-target="#thong_tin_thi_sinh" id="btn_thong_tin_thi_sinh">Ẩn thí sinh</button></a>
                     </li>
                     <li class="menu-item">
                         <a class="far fa-gem" href="#" id=""></a>
@@ -342,6 +374,8 @@
         <script src="test/bundle.js"></script>
         <script>
             var baiThi = Doc_Danh_sach_De_thi().Danh_sach_De_thi;
+            var sinhVien = Doc_Danh_sach_Sinh_vien().Danh_sach_Sinh_vien;
+            console.log(sinhVien)
             var cau_hoi_thi = "";
             var html = "";
             var htmlTienDo = "";
@@ -349,6 +383,20 @@
             var timeCount = 0;
             var status = 0;
             var cauDaLam = 0;
+
+            //*****Find the student*******************
+            sinhVien.forEach(x => {
+                if (x.MSSV == 125425) {
+                    ho_ten.innerHTML = x.Ho_ten;
+                    lop.innerHTML = x.Lop.Ten_lop;
+                    mssv.innerHTML = x.MSSV;
+                    cmnd.innerHTML = x.CMND;
+                    gioi_tinh.innerHTML = x.Gioi_tinh;
+                    ngay_sinh.innerHTML = x.Ngay_sinh;
+                    khoa.innerHTML = x.Lop.Khoa;
+                }
+            })
+
 
             //***Create the exam**********************
             baiThi.forEach(x => {
@@ -577,16 +625,26 @@
             // };
 
             if (screen.width >= 992 && screen.width <= 1196) {
-                document.getElementById("lam_bai_thi").classList.remove('col-lg-9');
-                document.getElementById("lam_bai_thi").classList.add('col-lg-8');
-                document.getElementById("thong_tin_bai_thi").classList.remove('col-lg-3');
-                document.getElementById("thong_tin_bai_thi").classList.add('col-lg-4');
-
+                if (document.getElementById("lam_bai_thi").classList.contains('col-lg-7')) {
+                    document.getElementById("lam_bai_thi").classList.remove('col-lg-7');
+                    document.getElementById("lam_bai_thi").classList.add('col-lg-6');
+                    document.getElementById("thong_tin_bai_thi").classList.remove('col-lg-3');
+                    document.getElementById("thong_tin_bai_thi").classList.add('col-lg-4');
+                } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-9')) {
+                    document.getElementById("lam_bai_thi").classList.remove('col-lg-9');
+                    document.getElementById("lam_bai_thi").classList.add('col-lg-8');
+                }
             } else {
-                document.getElementById("lam_bai_thi").classList.remove('col-lg-8');
-                document.getElementById("lam_bai_thi").classList.add('col-lg-9');
-                document.getElementById("thong_tin_bai_thi").classList.remove('col-lg-4');
-                document.getElementById("thong_tin_bai_thi").classList.add('col-lg-3');
+                if (document.getElementById("lam_bai_thi").classList.contains('col-lg-6')) {
+                    document.getElementById("lam_bai_thi").classList.remove('col-lg-6');
+                    document.getElementById("lam_bai_thi").classList.add('col-lg-7');
+                    document.getElementById("thong_tin_bai_thi").classList.remove('col-lg-4');
+                    document.getElementById("thong_tin_bai_thi").classList.add('col-lg-3');
+                } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-8')) {
+                    document.getElementById("lam_bai_thi").classList.remove('col-lg-8');
+                    document.getElementById("lam_bai_thi").classList.add('col-lg-9');
+                }
+
             }
 
             if (screen.width >= 992) {
@@ -602,21 +660,45 @@
             }
 
             btn_thong_tin_thi_sinh.onclick = () => {
-                if (document.getElementById("lam_bai_thi").classList.contains('col-lg-9')) {
-                    document.getElementById("lam_bai_thi").classList.remove('col-lg-9');
-                    document.getElementById("lam_bai_thi").classList.add('col-lg-7');
-                    btn_thong_tin_thi_sinh.innerHTML = "Ẩn thí sinh";
-                    // document.getElementById("thong_tin_bai_thi").classList.remove('col-md-3');
-                    // document.getElementById("thong_tin_bai_thi").classList.add('col-md-4');
+
+                if (screen.width >= 992 && screen.width <= 1196) {
+                    if (document.getElementById("lam_bai_thi").classList.contains('col-lg-7')) {
+                        document.getElementById("lam_bai_thi").classList.remove('col-lg-7');
+                        document.getElementById("lam_bai_thi").classList.add('col-lg-6');
+                        document.getElementById("thong_tin_bai_thi").classList.remove('col-lg-3');
+                        document.getElementById("thong_tin_bai_thi").classList.add('col-lg-4');
+                    } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-9')) {
+                        document.getElementById("lam_bai_thi").classList.remove('col-lg-9');
+                        document.getElementById("lam_bai_thi").classList.add('col-lg-8');
+                    } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-6')) {
+                        document.getElementById("lam_bai_thi").classList.remove('col-lg-6');
+                        document.getElementById("lam_bai_thi").classList.add('col-lg-8');
+                        btn_thong_tin_thi_sinh.innerHTML = "Hiện thí sinh"
+                    } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-8')) {
+                        document.getElementById("lam_bai_thi").classList.remove('col-lg-8');
+                        document.getElementById("lam_bai_thi").classList.add('col-lg-6');
+                        btn_thong_tin_thi_sinh.innerHTML = "Ẩn thí sinh"
+                    }
                 } else {
-                    document.getElementById("lam_bai_thi").classList.remove('col-lg-7');
-                    document.getElementById("lam_bai_thi").classList.add('col-lg-9');
-                    btn_thong_tin_thi_sinh.innerHTML = "Hiện thí sinh"
-                        // document.getElementById("thong_tin_bai_thi").classList.remove('col-md-3');
-                        // document.getElementById("thong_tin_bai_thi").classList.add('col-md-4');
+                    if (document.getElementById("lam_bai_thi").classList.contains('col-lg-6')) {
+                        document.getElementById("lam_bai_thi").classList.remove('col-lg-6');
+                        document.getElementById("lam_bai_thi").classList.add('col-lg-7');
+                        document.getElementById("thong_tin_bai_thi").classList.remove('col-lg-4');
+                        document.getElementById("thong_tin_bai_thi").classList.add('col-lg-3');
+                    } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-8')) {
+                        document.getElementById("lam_bai_thi").classList.remove('col-lg-8');
+                        document.getElementById("lam_bai_thi").classList.add('col-lg-9');
+                    } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-7')) {
+                        document.getElementById("lam_bai_thi").classList.remove('col-lg-7');
+                        document.getElementById("lam_bai_thi").classList.add('col-lg-9');
+                        btn_thong_tin_thi_sinh.innerHTML = "Hiện thí sinh"
+                    } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-9')) {
+                        document.getElementById("lam_bai_thi").classList.remove('col-lg-9');
+                        document.getElementById("lam_bai_thi").classList.add('col-lg-7');
+                        btn_thong_tin_thi_sinh.innerHTML = "Ẩn thí sinh"
+                    }
+
                 }
-
-
             }
         </script>
 
