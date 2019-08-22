@@ -8,10 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <!-- <script src="js/jquery.min.js"></script> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/menu.css">
     <style>
         body {
@@ -367,9 +370,13 @@
         </div>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="js/jquery-3.3.1.slim.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
+        <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+
         <script src="../Xu_ly/Xu_ly_3L.js"></script>
         <script src="test/bundle.js"></script>
         <script>
@@ -385,6 +392,7 @@
             var timeCount = 0;
             var status = 0;
             var cauDaLam = 0;
+            var submit = false;
 
             getTheExam(maDe);
             getInfoStudent(maThiSinh);
@@ -487,7 +495,7 @@
                 //Create grading function
             var i = 0;
 
-            function chamDiem() {
+            function chamDiem(maDe) {
                 var cauDung = 0; //A number of correct answers
                 var tongSoCau = 0; //A number of total question
 
@@ -496,7 +504,7 @@
                     //Get the question
                     x.CauHoi.forEach(y => {
                         //Get the exam with the code
-                        if (x.MaDe == 123) {
+                        if (x.MaDe == maDe) {
                             i++;
                             tongSoCau = y.length; //Get length of answer system
                             var radios = document.getElementsByName(`CH_${i}`); //Get the answer
@@ -518,6 +526,7 @@
                                     if (dap_an_dung.value == noiDung[1]) {
                                         $("td#" + `${i +"-"+noiDung[0]}`).css("background-color", "green"); //Change color with id tag "td" of correct sentence 
                                         $("a#" + `${i}TA`).css("color", "green"); //Change color tag "a" of correct sentence
+                                        cauDung++;
                                         flag++;
                                     }
                                 }
@@ -528,11 +537,11 @@
                                     $("a#" + `${i}TA`).css("color", "red"); //Change color tag "a" of incorrect sentence
                                 }
                             }
+                            //console.log(dap_an_dung.value + dap_an_tra_loi)
 
-
-                            if (dap_an_dung.value == dap_an_tra_loi) {
-                                cauDung++; //count the correct sentence
-                            }
+                            // if (dap_an_dung.value == dap_an_tra_loi) {
+                            //     cauDung++; //count the correct sentence
+                            // }
                         }
                     });
                 });
@@ -545,11 +554,12 @@
 
             //*****Submit exam*******************
             nop_bai.onclick = () => {
+                submit = true;
                 sessionStorage.removeItem("time");
                 status++;
                 time_count.innerHTML = "finished";
                 $(':radio:not(:checked)').attr('disabled', true); //Cannot allow people can check radio
-                chamDiem();
+                chamDiem(maDe);
             };
             var array = [];
             var flag2 = 0;
@@ -569,34 +579,39 @@
 
                     //******Get value "name" in tag "input"*********************
                     var a = $(this).find('td input:radio').prop('checked', true)
-                    var laySttCH = a[0].name.split("_");
+                    if (a[0] != undefined) {
+                        //console.log("Vào" + a[0])
 
-                    //******Find checkbox with value******************************
-                    var as = $(`input[type=checkbox][value=${laySttCH[1]}]`).prop("checked", true);
+                        var laySttCH = a[0].name.split("_");
+
+                        //******Find checkbox with value******************************
+                        var as = $(`input[type=checkbox][value=${laySttCH[1]}]`).prop("checked", true);
 
 
-                    var flag3 = 0;
-                    if (flag2 != 0) {
-                        for (var i = 0; i < array.length; i++) {
-                            // console.log(array[i] + "------" + as[0].value)
-                            if (as[0].value == array[i]) {
-                                flag3++;
-                                break;
+                        var flag3 = 0;
+                        if (flag2 != 0) {
+                            for (var i = 0; i < array.length; i++) {
+                                // console.log(array[i] + "------" + as[0].value)
+                                if (as[0].value == array[i]) {
+                                    flag3++;
+                                    break;
+                                }
+                                // console.log("flag: " + flag3 + "---" + as[0].value)
                             }
-                            // console.log("flag: " + flag3 + "---" + as[0].value)
-                        }
-                        if (flag3 == 0) {
+                            if (flag3 == 0) {
+                                cauDaLam++;
+                                soCauLam.innerHTML = `Số câu đã làm: ${cauDaLam}`
+                                soCauLam2.innerHTML = `${cauDaLam} /`
+                            }
+                        } else {
                             cauDaLam++;
                             soCauLam.innerHTML = `Số câu đã làm: ${cauDaLam}`
                             soCauLam2.innerHTML = `${cauDaLam} /`
                         }
-                    } else {
-                        cauDaLam++;
-                        soCauLam.innerHTML = `Số câu đã làm: ${cauDaLam}`
-                        soCauLam2.innerHTML = `${cauDaLam} /`
+                        array.push(as[0].value)
+                        flag2++;
                     }
-                    array.push(as[0].value)
-                    flag2++;
+
                 }
             })
 
@@ -609,7 +624,8 @@
             //******************************Time count down***************************************
             function startTimer() {
                 var presentTime = document.getElementById('time_count').innerHTML;
-
+                var status = document.getElementById("time_count");
+                //console.log(status.innerHTML)
                 var timeArray = presentTime.split(/[:]+/);
                 var m = timeArray[0];
                 var s = checkSecond((timeArray[1] - 1));
@@ -621,8 +637,13 @@
                 if (m >= 0 && s > 0) {
                     setTimeout(startTimer, 1000);
                 } else {
-                    time_count.innerHTML = "finished";
-                    nop_bai.click();
+                    if (submit == false) {
+                        time_count.innerHTML = "finished";
+                        nop_bai.click();
+                    } else {
+                        time_count.innerHTML = "finished";
+                    }
+
                 }
 
             }
