@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+</head>
+
+<body>
+    Mã đề :
+    <div id="ma_de"></div>
+    Chủ đề:
+    <div id="chu_de"></div>
+    Nội dung thi:
+    <table class="table" id="noi_dung_thi"></table>
+    <div id="bam_nop_bai"></div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        var deThi1 = {
+            MaDe: "123",
+            ChuDe: "Dat Nuoc",
+            CauHoi: [{
+                NoiDung: "Con gì tròn ?",
+                DapAn: [
+                    "Con 1",
+                    "Qua 2",
+                    "Con 3",
+                    "Con 4",
+                ],
+
+                DapAnDung: "Qua 2"
+            }, {
+                NoiDung: "Con gì méo ?",
+                DapAn: [
+                    "Con 5",
+                    "Qua 6",
+                    "Con 7",
+                    "Con 8",
+                ],
+                DapAnDung: "Qua 6"
+            }, {
+                NoiDung: "Con gì vuông ?",
+                DapAn: [
+                    "Con 9",
+                    "Qua 10",
+                    "Con 11",
+                    "Con 12",
+                ],
+                DapAnDung: "Qua 10"
+            }]
+        };
+
+        var baiThi = [deThi1];
+        var cau_hoi_thi = "";
+        var html = "";
+        var j = 0;
+        baiThi.forEach(x => {
+            if (x.MaDe == 123) {
+                ma_de.innerHTML = x.MaDe;
+                chu_de.innerHTML = x.ChuDe;
+                x.CauHoi.forEach(y => {
+                    j++;
+                    html += ` <tr>
+                    <td>Câu ${j}: ${y.NoiDung}</td>`
+                    for (var k = 0; k < y.DapAn.length; k++) {
+                        //console.log(y.DapAn[k])
+
+                        html += `
+        <tr>
+        <td id="${j}-${k}"><input type="radio" name="CH_${j}" value="${k}_${
+              y.DapAn[k]
+            }"> ${y.DapAn[k]}</td>
+        </tr>`;
+                    }
+                    html += `
+        
+        <td><input type="hidden" id="Cau_${j}" value="${y.DapAnDung}"></td>
+    `
+                        //console.log(y.DapAn.length)
+                });
+            }
+        });
+        noi_dung_thi.innerHTML = html;
+        bam_nop_bai.innerHTML = `<button type="button" class="btn btn-primary" id="nop_bai">Nộp bài</button>`
+        var i = 0;
+
+        function chamDiem() {
+            var cauDung = 0;
+            var tongSoCau = 0;
+            baiThi.forEach(x => {
+                x.CauHoi.forEach(y => {
+                    if (x.MaDe == 123) {
+                        i++;
+                        tongSoCau = y.length;
+                        var radios = document.getElementsByName(`CH_${i}`);
+                        var dap_an_dung = document.getElementById(`Cau_${i}`);
+                        var dap_an_tra_loi = "";
+                        for (var j = 0, length = radios.length; j < length; j++) {
+                            var flag = 0;
+                            var noiDung = radios[j].value.split("_");
+                            console.log(noiDung)
+                            if (radios[j].checked) {
+                                dap_an_tra_loi = noiDung[1];
+
+                                if (dap_an_dung.value == noiDung[1]) {
+                                    console.log("vao neeee")
+                                    console.log(noiDung[0])
+                                    $("td#" + `${i +"-"+noiDung[0]}`).css("background-color", "green");
+                                    flag++;
+                                }
+                            }
+                            if (noiDung[1] == dap_an_dung.value && flag == 0) {
+                                console.log(noiDung[0])
+                                $("td#" + `${i +"-"+noiDung[0]}`).css("background-color", "red");
+                            }
+                        }
+                        console.log("Cau: " + i);
+                        console.log("Dap an tra loi: " + dap_an_tra_loi);
+                        console.log("Dap an dung: " + dap_an_dung.value);
+
+                        if (dap_an_dung.value == dap_an_tra_loi) {
+                            cauDung++;
+                        }
+                    }
+                });
+            });
+            bam_nop_bai.innerHTML = `Số câu đúng : ${cauDung}/${i}`
+        }
+
+        nop_bai.onclick = () => {
+            chamDiem();
+        };
+
+        $("input:radio").change(function() {
+            $(this)
+                .closest("tr")
+                .siblings()
+                .css("background-color", "white")
+                .end()
+                .css("background-color", "skyblue");
+        });
+    </script>
+</body>
+
+</html>

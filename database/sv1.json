@@ -1,0 +1,26 @@
+{
+    "fullname": "Thảo Ngọc",
+    "student_code": "125425",
+    "identity_card_number": "025899331",
+    "sex": "Nữ",
+    "date_of_birth": "02/05/2000",
+    "password": "12345",
+    "address": "12 Lũy Bán Bích, Phường 1, Quận Tân Phú, Hồ Chí Minh, Việt Nam",
+    "class": {
+        "class_name": "11DHCT",
+        "faculty": "Kinh tế"
+    },
+    "scores": {
+        "semester_1": {
+            "Toan_A1": 10,
+            "Ly_A1": 10,
+            "Mac_Le_nin": 10
+        },
+        "semester_2": {
+            "Toan_A2": 10,
+            "Ly_A2": 10,
+            "GDTC": 10
+        }
+    }
+
+}

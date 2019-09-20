@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>displace.js</title>
+
+
+    <link rel="stylesheet" href="test/style.css">
+</head>
+
+<body>
+
+    <div id="myCheck" class="moveable"> Hi
+    </div>
+
+    <div style="display: none">
+        <div class="demo__two box-3">
+            <pre class="demo__code"><code class="javascript">
+				</code></pre>
+        </div>
+        <div class="demo__actions">
+            <button></button>
+        </div>
+    </div>
+
+    <script src="test/bundle.js"></script>
+    <script>
+        var element = document.getElementById("myCheck"); //grab the element
+        element.onclick = function() { //asign a function
+            console.log("okkk")
+        }
+    </script>
+</body>
+
+</html>
