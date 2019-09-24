@@ -304,7 +304,7 @@
 
 
         <!-- Menu can move -->
-        <div class="moveable logoGDU">
+        <!-- <div class="moveable logoGDU">
             <nav>
                 <input class="menu-toggler " type="checkbox">
                 <label for=""></label>
@@ -329,9 +329,9 @@
                     </li>
                 </ul>
             </nav>
-        </div>
+        </div> -->
 
-        <div style="display: none">
+        <!-- <div style="display: none">
             <div class="demo__actions">
                 <button></button>
             </div>
@@ -367,7 +367,7 @@
             <div class="custom-fn__wrapper">
                 <span class="custom-fn__div"></span>
             </div>
-        </div>
+        </div> -->
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="js/jquery-3.3.1.slim.min.js"></script>
@@ -378,7 +378,7 @@
         <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
 
         <script src="business/data.js"></script>
-        <script src="js/bundle.js"></script>
+        <!-- <script src="js/bundle.js"></script> -->
         <script>
             var examList = Doc_Danh_sach_De_thi().Danh_sach_De_thi;
             var studentList = Doc_Danh_sach_Sinh_vien().Danh_sach_Sinh_vien;
@@ -403,9 +403,9 @@
                         ho_ten.innerHTML = theStudent.full_name;
                         ma_sv.innerHTML = theStudent.student_code;
                         cmnd.innerHTML = theStudent.identity_card_number;
-                        lop.innerHTML = theStudent.class.class_name;
+                        lop.innerHTML = theStudent.student_class.class_name;
                         ngay_sinh.innerHTML = theStudent.date_of_birth;
-                        khoa.innerHTML = theStudent.class.faculty;
+                        khoa.innerHTML = theStudent.student_class.faculty;
                         gioi_tinh.innerHTML = theStudent.sex;
                         avatar_sv.innerHTML = `<img src="img/${theStudent.student_code}.jpg" width="100%" height="100%">`;
                     }
@@ -698,47 +698,47 @@
                 document.getElementById("btn_tien_do").style.display = "block";
             }
 
-            btn_thong_tin_thi_sinh.onclick = () => {
+            // btn_thong_tin_thi_sinh.onclick = () => {
 
-                if (screen.width >= 992 && screen.width <= 1196) {
-                    if (document.getElementById("lam_bai_thi").classList.contains('col-lg-7')) {
-                        document.getElementById("lam_bai_thi").classList.remove('col-lg-7');
-                        document.getElementById("lam_bai_thi").classList.add('col-lg-6');
-                        document.getElementById("thong_tin_bai_thi").classList.remove('col-lg-3');
-                        document.getElementById("thong_tin_bai_thi").classList.add('col-lg-4');
-                    } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-9')) {
-                        document.getElementById("lam_bai_thi").classList.remove('col-lg-9');
-                        document.getElementById("lam_bai_thi").classList.add('col-lg-8');
-                    } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-6')) {
-                        document.getElementById("lam_bai_thi").classList.remove('col-lg-6');
-                        document.getElementById("lam_bai_thi").classList.add('col-lg-8');
-                        btn_thong_tin_thi_sinh.innerHTML = "Hiện thí sinh"
-                    } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-8')) {
-                        document.getElementById("lam_bai_thi").classList.remove('col-lg-8');
-                        document.getElementById("lam_bai_thi").classList.add('col-lg-6');
-                        btn_thong_tin_thi_sinh.innerHTML = "Ẩn thí sinh"
-                    }
-                } else {
-                    if (document.getElementById("lam_bai_thi").classList.contains('col-lg-6')) {
-                        document.getElementById("lam_bai_thi").classList.remove('col-lg-6');
-                        document.getElementById("lam_bai_thi").classList.add('col-lg-7');
-                        document.getElementById("thong_tin_bai_thi").classList.remove('col-lg-4');
-                        document.getElementById("thong_tin_bai_thi").classList.add('col-lg-3');
-                    } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-8')) {
-                        document.getElementById("lam_bai_thi").classList.remove('col-lg-8');
-                        document.getElementById("lam_bai_thi").classList.add('col-lg-9');
-                    } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-7')) {
-                        document.getElementById("lam_bai_thi").classList.remove('col-lg-7');
-                        document.getElementById("lam_bai_thi").classList.add('col-lg-9');
-                        btn_thong_tin_thi_sinh.innerHTML = "Hiện thí sinh"
-                    } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-9')) {
-                        document.getElementById("lam_bai_thi").classList.remove('col-lg-9');
-                        document.getElementById("lam_bai_thi").classList.add('col-lg-7');
-                        btn_thong_tin_thi_sinh.innerHTML = "Ẩn thí sinh"
-                    }
+            //     if (screen.width >= 992 && screen.width <= 1196) {
+            //         if (document.getElementById("lam_bai_thi").classList.contains('col-lg-7')) {
+            //             document.getElementById("lam_bai_thi").classList.remove('col-lg-7');
+            //             document.getElementById("lam_bai_thi").classList.add('col-lg-6');
+            //             document.getElementById("thong_tin_bai_thi").classList.remove('col-lg-3');
+            //             document.getElementById("thong_tin_bai_thi").classList.add('col-lg-4');
+            //         } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-9')) {
+            //             document.getElementById("lam_bai_thi").classList.remove('col-lg-9');
+            //             document.getElementById("lam_bai_thi").classList.add('col-lg-8');
+            //         } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-6')) {
+            //             document.getElementById("lam_bai_thi").classList.remove('col-lg-6');
+            //             document.getElementById("lam_bai_thi").classList.add('col-lg-8');
+            //             btn_thong_tin_thi_sinh.innerHTML = "Hiện thí sinh"
+            //         } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-8')) {
+            //             document.getElementById("lam_bai_thi").classList.remove('col-lg-8');
+            //             document.getElementById("lam_bai_thi").classList.add('col-lg-6');
+            //             btn_thong_tin_thi_sinh.innerHTML = "Ẩn thí sinh"
+            //         }
+            //     } else {
+            //         if (document.getElementById("lam_bai_thi").classList.contains('col-lg-6')) {
+            //             document.getElementById("lam_bai_thi").classList.remove('col-lg-6');
+            //             document.getElementById("lam_bai_thi").classList.add('col-lg-7');
+            //             document.getElementById("thong_tin_bai_thi").classList.remove('col-lg-4');
+            //             document.getElementById("thong_tin_bai_thi").classList.add('col-lg-3');
+            //         } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-8')) {
+            //             document.getElementById("lam_bai_thi").classList.remove('col-lg-8');
+            //             document.getElementById("lam_bai_thi").classList.add('col-lg-9');
+            //         } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-7')) {
+            //             document.getElementById("lam_bai_thi").classList.remove('col-lg-7');
+            //             document.getElementById("lam_bai_thi").classList.add('col-lg-9');
+            //             btn_thong_tin_thi_sinh.innerHTML = "Hiện thí sinh"
+            //         } else if (document.getElementById("lam_bai_thi").classList.contains('col-lg-9')) {
+            //             document.getElementById("lam_bai_thi").classList.remove('col-lg-9');
+            //             document.getElementById("lam_bai_thi").classList.add('col-lg-7');
+            //             btn_thong_tin_thi_sinh.innerHTML = "Ẩn thí sinh"
+            //         }
 
-                }
-            }
+            //     }
+            // }
         </script>
 
 </body>
