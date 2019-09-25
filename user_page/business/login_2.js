@@ -28,7 +28,6 @@ function kiemTraDangNhap(studentCode, password) {
     }
 }
 
-
 dang_nhap.onclick = () => {
     if (kiemTraDangNhap(studentCode.value, password.value) == true) {
         sessionStorage.setItem("student_code", studentCode.value)

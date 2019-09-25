@@ -1,7 +1,5 @@
 var Dia_chi_Dich_vu = "https://dv-webtracnghiem.herokuapp.com/"
 //var Dia_chi_Dich_vu = "http://localhost:1200/"
-var examList = Doc_Danh_sach_De_thi().Danh_sach_De_thi;
-var studentsList = Doc_Danh_sach_Sinh_vien().Danh_sach_Sinh_vien;
 
 function Doc_Danh_sach_De_thi() {
     var Du_lieu = {}
