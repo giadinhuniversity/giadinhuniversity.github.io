@@ -6,65 +6,32 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link href="img/iconGDU.ico" rel="shortcut icon" type="image/x-icon" />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/ajax/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/ionicons.min.css">
     <link rel="stylesheet" href="css/login.css">
-    <style>
-        .center {
-            margin-left: 50%;
-            margin-top: 25%;
-            position: relative;
-        }
-    </style>
 </head>
 
 <body background="img/backgroundGDU.jpg" style="background-size:cover;">
         <div class="login-dark">
-                <form method="post" style="background-color:hsla(84,100%,100%,0.8);">
+                <div class="form" style="background-color:hsla(84,100%,100%,0.8);">
                     <h2 class="sr-only">Login Form</h2>
                     <div class="illustration"><img src="img/logoGDU.png" alt="Smiley face" width="100%" height="100%"></div>
-                    <div class="form-group"><input class="form-control" style="color: black;" id="student_code" type="email" name="maSV" placeholder="Nhập mã sinh viên"></div>
+                    <div class="form-group"><input class="form-control" style="color: black;" id="student_code" type="text" name="txtmaSV" placeholder="Nhập mã sinh viên"></div>
                     <div class="form-group"><input class="form-control" style="color: black;" id="password" type="password" name="password" placeholder="Nhập mật khẩu"></div>
                     <div class="form-group"><button class="btn btn-primary btn-block" id="dang_nhap" type="submit">Đăng nhập</button></div>
                     <!-- <a href="#" class="forgot">Forgot your email or password?</a> -->
-                </form>
+                </div>
             </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.3.1.slim.min.js" ></script>
+    <script src="js/popper.min.js" ></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="business/data.js"></script>
-    <script>
-        var listStudent = Doc_Danh_sach_Sinh_vien().Danh_sach_Sinh_vien;
-        var studentCode = document.getElementById("student_code");
-        var password = document.getElementById("password");
-
-        function kiemTraDangNhap(studentCode, password) {
-            var flag = 0;
-            listStudent.forEach(student => {
-                if (student.student_code == studentCode && student.password == password) {
-                    flag++;
-                }
-            });
-            if (flag != 0) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        dang_nhap.onclick = () => {
-            if (kiemTraDangNhap(studentCode.value, password.value) == true) {
-                sessionStorage.setItem("student_code", studentCode.value)
-                document.location.href = "manage_exam2.html";
-            }
-        }
-    </script>
-
+    <script src="business/login_2.js"></script>
 </body>
 
 </html>
