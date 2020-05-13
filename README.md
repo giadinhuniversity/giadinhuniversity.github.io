@@ -1,2 +1,0 @@
-# giadinhuniversity.github.io
-hi
